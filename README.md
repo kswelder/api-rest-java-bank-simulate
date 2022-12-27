@@ -1,12 +1,12 @@
-#Simulacao dd api de banco
+# Simulacao de api de banco
 
-##Uma aplicacao simples utilizando
+## Uma aplicacao simples utilizando
 
         maven
         jdbc
         spring-boot
 
-##Introducao
+## Introducao
 
     Esta aplicacao tem como principal objetivo a simulacao de como funcionaria uma api de banco.
 
