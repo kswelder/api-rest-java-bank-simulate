@@ -1,20 +1,38 @@
 package banco;
 
+/*
+ * Classe de objetos Client
+ */
+
 import java.time.LocalDateTime;
 
 class Client {
   private String nome;
-  private String nascimento;
+  private String nascimento = "00/00/0000";
   private LocalDateTime criacao;
   private LocalDateTime atualizacao;
 
   Client(String nome, String data) {
     this.nome = nome;
-    this.nascimento = data;
     this.criacao = LocalDateTime.now();
     this.atualizacao = criacao;
-
+    
+    // Funcao de checagem de valor de data
     checagemDeValor(data);
+  }
+  public void atualizarDados(
+    String novoNome,
+    String novoNascimento
+  ) {
+    this.nome = novoNome;
+    checagemDeValor(novoNascimento);
+    this.atualizacao = LocalDateTime.now();
+  }
+  public String getNome() {
+    return this.nome;
+  }
+  public String getNascimento() {
+    return this.nascimento;
   }
   public String informacoes() {
     return "Nome: " + this.nome +
@@ -22,8 +40,9 @@ class Client {
       "\nCriacao: " + this.criacao +
       "\nAtualizacao: " + this.atualizacao;
   }
+
+  // Checa se o valor da data esta em formato correto de data
   private void checagemDeValor(String valor) {
-    String skol = "sem conteudo";
     char[] valores = valor.toCharArray();
     boolean check = false;
     for(int x = 0; x < valor.length();x++) {
@@ -40,11 +59,7 @@ class Client {
       }
     }
     if(check == true) {
-      skol = "tudo certin";
+      this.nascimento = valor;
     }
-    else {
-      skol = "deu rim";
-    }
-    System.out.println(skol);
   }
 }
