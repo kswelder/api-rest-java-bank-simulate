@@ -8,7 +8,7 @@
 
 ## Introducao
 
-    Esta aplicacao tem como principal objetivo a simulacao de como funcionaria uma api de banco.
+Esta aplicacao tem como principal objetivo a simulacao de como funcionaria uma api de banco.
 
     A aplicacao contem as classes:
 
