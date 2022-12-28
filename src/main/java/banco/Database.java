@@ -1,28 +1,14 @@
 package banco;
 
 import java.time.LocalDateTime;
-import java.sql.*;
 
 /*
  *
  */
 
 class Database {
-  private String databaseEnv = "jdbc:sqlite:"+System.getenv("DATABASE");
-  private Connection conexao() {
-    Connection conn = null;
-
-    try {
-      conn = DriverManager.getConnection(databaseEnv);
-      System.out.println("Conexao realizada com sucesso!");
-      }
-
-    catch (SQLException e) {
-      System.out.println(e.getMessage());
-    }
-
-    return conn;
-  }
+  //private String databaseEnv = "jdbc:sqlite:data::memory";//+System.getenv("DATABASE");
+  //private Connection conexao() {}
 
   public void teste() {
     // SQL statement for creating a new table
@@ -32,13 +18,5 @@ class Database {
       + " saldo real\n"
       + ");";
 
-    try{
-      Connection conn = this.conexao();
-      Statement stmt = conn.createStatement();
-      stmt.execute(sql);
-    }
-    catch (SQLException e) {
-      System.out.println(e.getMessage());
-    }
   }
 }
