@@ -4,17 +4,17 @@ package banco;
  * Hello world!
  *
  */
-public class App 
+import java.util.Arrays;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+
+@SpringBootApplication
+public class App
 {
-  public static void main( String[] args )
-  {
-    Database dt = new Database();
-    try {
-      dt.teste();
-    }
-    catch(Exception ex) {
-      System.out.println("Erro sqlite");
-    }
-    System.out.println( "Hello World!");
-  }
+  public static void main(String[] args) {
+		SpringApplication.run(App.class, args);
+	}
 }
