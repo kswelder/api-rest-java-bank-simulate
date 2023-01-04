@@ -3,21 +3,33 @@ package banco.model;
 /*
  * Objeto classe de criacao de conta
  */
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+
+//import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
 
 import java.io.Serializable;
 import java.util.concurrent.atomic.AtomicLong;
 
-@SuperBuilder                                     @Getter
-@Setter                                           @AllArgsConstructor
+@Entity
+@SuperBuilder
+@Getter
+@Setter
+@AllArgsConstructor
 @NoArgsConstructor
 @ToString
-class Conta implements Serializable{
-  private Integer enderecoId;
-  private Integer clienteId;
+public class Conta implements Serializable{
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
   private String titular;
-  private double saldo;
+  private Double saldo;
   private String criacao;
   private String atualizacao;
 }
