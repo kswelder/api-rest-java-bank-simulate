@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicLong;
 @SuperBuilder                                     @Getter
 @Setter                                           @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+//@ToString
 class Endereco implements Serializable{
   private Integer id;
   private String uf;

@@ -9,10 +9,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
-//import javax.persistence.*;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
+import javax.persistence.*;
+//import javax.persistence.Entity;
+//import javax.persistence.Id;
+//import javax.persistence.GeneratedValue;
 
 import java.io.Serializable;
 import java.util.concurrent.atomic.AtomicLong;
@@ -23,11 +23,10 @@ import java.util.concurrent.atomic.AtomicLong;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
-public class Conta implements Serializable{
+public class ContaModel implements Serializable{
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
   private String titular;
   private Double saldo;
   private String criacao;
