@@ -1,7 +1,0 @@
-apibanco/model/Conta$ContaBuilder.class
-apibanco/BancoApplication.class
-apibanco/model/Conta$ContaBuilderImpl.class
-apibanco/model/Conta.class
-apibanco/repository/ContaRepository.class
-apibanco/controller/ContaController.class
-apibanco/service/ContaService.class
