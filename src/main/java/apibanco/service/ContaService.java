@@ -18,7 +18,8 @@ public class ContaService {
   private ContaRepository contaRepository;
 
   public Conta save(Conta conta) {
-    conta.setData(new Date().toString());
+    conta.setCreatedAt(new Date().toString());
+    conta.setUpdatedAt(new Date().toString());
     return contaRepository.save(conta);
   }
   public List<Conta> list() {
