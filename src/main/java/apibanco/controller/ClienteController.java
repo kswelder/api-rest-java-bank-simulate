@@ -5,6 +5,8 @@ import apibanco.model.Cliente;
 import apibanco.model.Endereco;
 import apibanco.service.ClienteService;
 
+import apibanco.dto.ClienteDTO;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,8 +23,10 @@ public class ClienteController {
   private ClienteService clienteService;
 
   @PostMapping(path="/save")
-  public ResponseEntity<Cliente> salvar(@RequestBody Cliente cliente) {
-    return ResponseEntity.status(201).body(clienteService.save(cliente));
+  public ResponseEntity<ClienteDTO> salvar(@RequestBody Cliente cliente) {
+    ClienteDTO dto = clienteService.save(cliente);
+    
+    return ResponseEntity.status(201).body(dto);
   }
 
   @GetMapping(path="/list")
