@@ -31,7 +31,7 @@ public class ClienteDTO implements Serializable {
     private Endereco endereco;
     private List<Conta> conta;
 
-    public ClienteDTO(Cliente cliente){
+    public void ClienteDTO(Cliente cliente){
 
         this.id = cliente.getId();
         this.nome = cliente.getNome();
