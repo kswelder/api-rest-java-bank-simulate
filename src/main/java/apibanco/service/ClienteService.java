@@ -32,7 +32,7 @@ public class ClienteService {
   @Autowired
   private EnderecoService enderecoService;
 
-  public Cliente save(Cliente cliente) {
+  public ClienteDTO save(Cliente cliente) {
     Endereco endereco = new Endereco();
     Conta conta = new Conta();
     enderecoService.save(endereco);
