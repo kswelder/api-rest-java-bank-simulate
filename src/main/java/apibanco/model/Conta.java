@@ -21,7 +21,7 @@ public class Conta implements Serializable{
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-  private Integer id;
+  private Long id;
   private Double saldo;
   private String createdAt;
   private String updatedAt;
