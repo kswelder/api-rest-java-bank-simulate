@@ -20,7 +20,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-public class Conta implements Serializable{
+public class Cliente implements Serializable{
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
 
@@ -29,11 +29,11 @@ public class Conta implements Serializable{
   private String nascimento;
 
   @OneToOne
-  @JoinCollumn(name = "endereco_id")
+  @JoinColumn(name = "endereco_id")
   private Endereco endereco;
 
   @OneToMany
-  @JoinCollumn(name = "conta_id")
+  @JoinColumn(name = "conta_id")
   private List<Conta> conta;
 }
 

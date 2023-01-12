@@ -15,7 +15,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-public class Conta implements Serializable{
+public class Endereco implements Serializable{
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
 
@@ -26,7 +26,7 @@ public class Conta implements Serializable{
   private Integer numero;
 
   @OneToOne
-  @JoinCollumn(name = "cliente_id")
+  @JoinColumn(name = "cliente_id")
   private Cliente cliente;
 }
 

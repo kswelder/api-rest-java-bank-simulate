@@ -27,7 +27,7 @@ public class Conta implements Serializable{
   private String updatedAt;
 
   @ManyToOne
-  @JoinCollumn(name = "cliente_id")
+  @JoinColumn(name = "cliente_id")
   private Cliente cliente;
 }
 
