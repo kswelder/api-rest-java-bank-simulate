@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -25,10 +26,10 @@ public class ClienteService {
   @Autowired
   private ClienteRepository clienteRepository;
 
-  @AutoWired
+  @Autowired
   private ContaService contaService;
 
-  @AutoWired
+  @Autowired
   private EnderecoService enderecoService;
 
   public Cliente save(Cliente cliente) {
@@ -37,7 +38,7 @@ public class ClienteService {
     enderecoService.save(endereco);
     contaService.save(conta);
     cliente.setEndereco(endereco);
-    List<Conta> lista = new List<Conta>;
+    List<Conta> lista = new ArrayList<Conta>();
     lista.add(conta);
     cliente.setConta(lista);
     ClienteDTO dto = new ClienteDTO(cliente);

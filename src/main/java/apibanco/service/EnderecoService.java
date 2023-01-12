@@ -1,7 +1,7 @@
 package apibanco.service;
 
 import apibanco.model.Endereco;
-import apibanco.repository.ContaRepository;
+import apibanco.repository.EnderecoRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class ContaService {
+public class EnderecoService {
 
   @Autowired
   private EnderecoRepository enderecoRepository;
