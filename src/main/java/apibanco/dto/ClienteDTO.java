@@ -1,8 +1,6 @@
 package apibanco.dto;
 
 import apibanco.model.Cliente;
-import apibanco.model.Endereco;
-import apibanco.model.Conta;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,16 +27,10 @@ public class ClienteDTO implements Serializable {
 
     private String nascimento;
 
-    private Endereco endereco;
-
-    private List<Conta> conta;
-
     public ClienteDTO(Cliente cliente){
 
         this.id = cliente.getId();
         this.nome = cliente.getNome();
         this.nascimento = cliente.getNascimento();
-        this.endereco = cliente.getEndereco();
-        this.conta = cliente.getConta();
     }
 }

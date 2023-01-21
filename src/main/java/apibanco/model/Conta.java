@@ -22,7 +22,10 @@ public class Conta implements Serializable{
   @GeneratedValue(strategy = GenerationType.IDENTITY)
 
   private Long id;
+  private String cartao;
+  private String agencia;
   private Double saldo;
+  private String status;
   private String createdAt;
   private String updatedAt;
 
