@@ -11,20 +11,24 @@ import lombok.experimental.SuperBuilder;
 import javax.persistence.*;
 import java.io.Serializable;
 
-import java.util.List;
-
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-public class Cliente implements Serializable{
+public class Transacao implements Serializable{
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
 
   private Long id;
-  private String nome;
-  private String nascimento;
+  private String operacao;
+  private String para;
+  private Double valor;
+  private String createdAt;
+
+  @ManyToOne
+  @JoinColumn(name = "cliente_id")
+  private Conta conta;
 }
 

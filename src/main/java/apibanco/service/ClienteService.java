@@ -1,23 +1,15 @@
 package apibanco.service;
 
 import apibanco.model.Cliente;
-import apibanco.model.Conta;
-import apibanco.model.Endereco;
-
-import apibanco.service.ContaService;
-import apibanco.service.EnderecoService;
-
+import apibanco.records.ClienteRecord;
 import apibanco.repository.ClienteRepository;
-
-import apibanco.dto.ClienteDTO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
-import java.util.ArrayList;
 import java.util.Optional;
+import java.lang.RuntimeException;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,26 +18,31 @@ public class ClienteService {
   @Autowired
   private ClienteRepository clienteRepository;
 
-  @Autowired
-  private ContaService contaService;
-
-  @Autowired
-  private EnderecoService enderecoService;
-
-  public ClienteDTO save(Cliente cliente) {
-    Endereco endereco = new Endereco();
-    Conta conta = new Conta();
-    enderecoService.save(endereco);
-    contaService.save(conta);
-    cliente.setEndereco(endereco);
-    List<Conta> lista = new ArrayList<Conta>();
-    lista.add(conta);
-    cliente.setConta(lista);
-    ClienteDTO dto = new ClienteDTO(cliente);
+  public ClienteRecord saveRecord(Cliente cliente) {
+    ClienteRecord cr = new ClienteRecord(cliente);
     clienteRepository.save(cliente);
-    return dto;
+    return cr;
   }
-  public List<Cliente> list() {
-    return clienteRepository.findAll();
+  public ClienteRecord updateRecord(String nome, Cliente cliente) {
+    ClienteRecord findRc = Optional.of(new ClienteRecord(clienteRepository.findByNomeLike(nome)))
+            .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
+    cliente.setId(findRc.cliente().getId());
+    ClienteRecord cr = new ClienteRecord(cliente);
+    clienteRepository.save(cliente);
+    return cr;
+  }
+  public List<ClienteRecord> list() {
+    return Optional.of(clienteRepository.findAll()
+            .stream()
+            .map(c -> new ClienteRecord(c))
+            .collect(Collectors.toList()))
+            .orElseThrow(() -> new RuntimeException("Erro no servidor"));
+  }
+
+  public ClienteRecord findNome(String nome) {
+    ClienteRecord rc = Optional.of(new ClienteRecord(clienteRepository.findByNomeLike(nome)))
+            .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
+
+    return rc;
   }
 }
