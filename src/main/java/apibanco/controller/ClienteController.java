@@ -36,7 +36,7 @@ public class ClienteController {
   }
 
   @GetMapping(path="/list")
-  public ResponseEntity<List<Cliente>> list() {
+  public ResponseEntity<List<ClienteRecord>> list() {
     return ResponseEntity.status(200).body(clienteService.list());
   }
 }
