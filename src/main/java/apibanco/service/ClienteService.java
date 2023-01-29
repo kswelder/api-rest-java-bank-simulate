@@ -1,5 +1,6 @@
 package apibanco.service;
 
+import apibanco.exception.RegraDeNegocioException;
 import apibanco.model.Cliente;
 import apibanco.records.ClienteRecord;
 import apibanco.repository.ClienteRepository;
@@ -9,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.lang.RuntimeException;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,24 +25,23 @@ public class ClienteService {
   }
   public ClienteRecord updateRecord(String nome, Cliente cliente) {
     ClienteRecord findRc = Optional.of(new ClienteRecord(clienteRepository.findByNomeLike(nome)))
-            .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
+            .orElseThrow(() -> new RegraDeNegocioException("Cliente não encontrado"));
     cliente.setId(findRc.cliente().getId());
-    ClienteRecord cr = new ClienteRecord(cliente);
+    findRc.cliente().setNome(cliente.getNome());
+    findRc.cliente().setNascimento(cliente.getNascimento());
     clienteRepository.save(cliente);
-    return cr;
+    return findRc;
   }
   public List<ClienteRecord> list() {
     return Optional.of(clienteRepository.findAll()
             .stream()
-            .map(c -> new ClienteRecord(c))
+            .map(ClienteRecord::new)
             .collect(Collectors.toList()))
-            .orElseThrow(() -> new RuntimeException("Erro no servidor"));
+            .orElseThrow(() -> new RegraDeNegocioException("Erro no servidor"));
   }
 
   public ClienteRecord findNome(String nome) {
-    ClienteRecord rc = Optional.of(new ClienteRecord(clienteRepository.findByNomeLike(nome)))
-            .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
-
-    return rc;
+    return Optional.of(new ClienteRecord(clienteRepository.findByNomeLike(nome)))
+            .orElseThrow(() -> new RegraDeNegocioException("Cliente não encontrado"));
   }
 }

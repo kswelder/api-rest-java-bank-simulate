@@ -32,11 +32,11 @@ public class ClienteController {
   @PutMapping(path="/update/{nome}")
   public ResponseEntity<ClienteRecord> updateOne(@PathVariable("nome") String nome, @RequestBody Cliente cliente) {
     ClienteRecord cr = clienteService.updateRecord(nome, cliente);
-    return ResponseEntity.status(HttpStatus.OK).body(cr);
+    return ResponseEntity.status(HttpStatus.NO_CONTENT).body(cr);
   }
 
   @GetMapping(path="/list")
   public ResponseEntity<List<ClienteRecord>> list() {
-    return ResponseEntity.status(200).body(clienteService.list());
+    return ResponseEntity.status(HttpStatus.ACCEPTED).body(clienteService.list());
   }
 }
