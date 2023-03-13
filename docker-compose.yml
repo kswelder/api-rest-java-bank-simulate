@@ -1,0 +1,19 @@
+version: '3.5'
+
+services:
+  data_base:
+    image: postgres:11
+    restart: always
+    container_name: postgres_database
+    ports:
+      - "3232:5432"
+    networks:
+      - msnetwork
+    environment:
+      - POSTGRES_DB = mydb
+      - POSTGRES_USER = kswelder
+      - POSTGRES_PASSWORD = 5544
+
+networks:
+  msnetwork:
+    driver: bridge
