@@ -1,18 +1,15 @@
-# Simulacao de api de banco
+# API Rest Java Bank Simulate
 
-## Uma aplicacao simples utilizando
+## A simple application using this features 
 
-    spring-boot
-    postgresql
+    Spring Boot
+    Postgresql
+    Junit 5
+    JWT
 
-## Introducao
+## Introduction
 
-Esta aplicacao tem como principal objetivo a simulacao de como funcionaria uma api de banco.
+This application with the principal object simulate a bank application.
 
-### Classes contidas na aplicação :
-
-    Conta
-    ContaService
-    ContaController
-    ContaRepository
+## Class in the application :
 
