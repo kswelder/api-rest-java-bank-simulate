@@ -15,18 +15,20 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-public class Endereco implements Serializable{
+public class Account implements Serializable{
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
 
   private Long id;
-  private String uf;
-  private String cidade;
-  private String rua;
-  private Integer numero;
+  private String cartao;
+  private String agencia;
+  private Double saldo;
+  private String status;
+  private String createdAt;
+  private String updatedAt;
 
-  @OneToOne
+  @ManyToOne
   @JoinColumn(name = "cliente_id")
-  private Cliente cliente;
+  private Client client;
 }
 

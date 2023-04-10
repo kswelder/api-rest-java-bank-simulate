@@ -7,8 +7,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class RegraDeNegocioException extends RuntimeException {
-    public RegraDeNegocioException(String message) {
+public class BusinessRuleException extends RuntimeException {
+    public BusinessRuleException(String message) {
         super(message);
     }
 }
