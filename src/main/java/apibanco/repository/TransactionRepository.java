@@ -1,6 +1,6 @@
 package apibanco.repository;
 
-import apibanco.model.Endereco;
+import apibanco.model.Transacao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 //import org.springframework.data.jpa.repository.Query;
@@ -9,4 +9,4 @@ import org.springframework.stereotype.Repository;
 //import java.util.Optional;
 
 @Repository
-public interface EnderecoRepository extends JpaRepository<Endereco, Long>{}
+public interface TransactionRepository extends JpaRepository<Transacao, Long>{}

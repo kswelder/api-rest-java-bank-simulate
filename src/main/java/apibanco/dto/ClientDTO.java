@@ -1,6 +1,6 @@
 package apibanco.dto;
 
-import apibanco.model.Cliente;
+import apibanco.model.Client;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,11 +10,11 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ClienteDTO {
+public class ClientDTO {
     private String nome;
     private String nascimento;
-    public ClienteDTO(Cliente cliente) {
-        this.nome = cliente.getNome();
-        this.nascimento = cliente.getNascimento();
+    public ClientDTO(Client client) {
+        this.nome = client.getNome();
+        this.nascimento = client.getNascimento();
     }
 }

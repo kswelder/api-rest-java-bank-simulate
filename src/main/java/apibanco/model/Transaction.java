@@ -1,7 +1,5 @@
 package apibanco.model;
 
-import apibanco.model.Cliente;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,20 +15,18 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-public class Conta implements Serializable{
+public class Transaction implements Serializable{
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
 
   private Long id;
-  private String cartao;
-  private String agencia;
-  private Double saldo;
-  private String status;
+  private String operacao;
+  private String para;
+  private Double valor;
   private String createdAt;
-  private String updatedAt;
 
   @ManyToOne
   @JoinColumn(name = "cliente_id")
-  private Cliente cliente;
+  private Account account;
 }
 

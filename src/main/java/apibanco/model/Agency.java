@@ -13,7 +13,7 @@ import lombok.experimental.SuperBuilder;
 @Setter
 @NoArgsConstructor
 @SuperBuilder
-public class Agencia {
+public class Agency {
   private List<String> ufs;
   private List<Integer> refs;
 }
