@@ -26,7 +26,7 @@ public class Transaction implements Serializable{
   private String createdAt;
 
   @ManyToOne
-  @JoinColumn(name = "cliente_id")
+  @JoinColumn(name = "account_id")
   private Account account;
 }
 
