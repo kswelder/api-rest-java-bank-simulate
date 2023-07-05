@@ -8,6 +8,7 @@ import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Getter
@@ -20,8 +21,11 @@ public class Client implements Serializable{
   @GeneratedValue(strategy = GenerationType.IDENTITY)
 
   private Long id;
-  private String nome;
-  private String nascimento;
+  private String name;
+  private String old;
 
+  @OneToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "account_id")
+  private Account account;
 }
 
