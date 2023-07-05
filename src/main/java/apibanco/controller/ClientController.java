@@ -23,9 +23,9 @@ public class ClientController {
     return ResponseEntity.status(HttpStatus.OK).body(clientService.findNome(nome));
   }
 
-  @PostMapping(path="/save")
-  public ResponseEntity<ClientDTO> savarRecord(@RequestBody Client client) {
-    ClientDTO dto = clientService.saveRecord(client);
+  @PostMapping(path="/save/{username}")
+  public ResponseEntity<ClientDTO> savarRecord(@PathVariable("username") String username ,@RequestBody Client client) {
+    ClientDTO dto = clientService.saveRecord(username ,client);
 
     return ResponseEntity.status(HttpStatus.CREATED).body(dto);
   }
