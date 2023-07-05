@@ -10,9 +10,9 @@ services:
     networks:
       - msnetwork
     environment:
-      - POSTGRES_DB = mydb
-      - POSTGRES_USER = kswelder
-      - POSTGRES_PASSWORD = 5544
+      - POSTGRES_DB=mydb
+      - POSTGRES_USER=kswelder
+      - POSTGRES_PASSWORD=5544
 
 networks:
   msnetwork:
