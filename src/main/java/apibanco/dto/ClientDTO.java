@@ -11,10 +11,10 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ClientDTO {
-    private String nome;
-    private String nascimento;
+    private String name;
+    private String old;
     public ClientDTO(Client client) {
-        this.nome = client.getNome();
-        this.nascimento = client.getNascimento();
+        this.name = client.getName();
+        this.old = client.getOld();
     }
 }
