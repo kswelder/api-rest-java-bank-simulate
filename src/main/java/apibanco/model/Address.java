@@ -21,12 +21,12 @@ public class Address implements Serializable{
 
   private Long id;
   private String uf;
-  private String cidade;
-  private String rua;
-  private Integer numero;
+  private String city;
+  private String street;
+  private Integer number;
 
-  @OneToOne
-  @JoinColumn(name = "cliente_id")
-  private Client client;
+  @OneToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "account_id")
+  private Account account;
 }
 
