@@ -8,6 +8,8 @@ import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -20,15 +22,20 @@ public class Account implements Serializable{
   @GeneratedValue(strategy = GenerationType.IDENTITY)
 
   private Long id;
-  private String cartao;
-  private String agencia;
-  private Double saldo;
-  private String status;
-  private String createdAt;
-  private String updatedAt;
+  @Column(unique = true, nullable = false)
+  private String username;
+  @Column(nullable = false)
+  private String password;
+  private LocalDateTime createdAt;
+  private LocalDateTime updatedAt;
 
-  @ManyToOne
-  @JoinColumn(name = "cliente_id")
-  private Client client;
+  @OneToMany(fetch = FetchType.LAZY)
+  @JoinColumn(name = "transition_id")
+  private List<Transaction> transactions;
+
+  @OneToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "address_id")
+  private Address address;
+
 }
 
