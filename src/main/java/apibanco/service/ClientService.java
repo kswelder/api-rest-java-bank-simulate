@@ -21,21 +21,18 @@ public class ClientService {
   @Autowired
   private AccountService accountService;
 
-  public ClientDTO saveRecord(String username,Client client) {
+  public void saveClient(String username,Client client) {
     Account account = accountService.findAccount(username);
     client.setAccount(account);
-    ClientDTO cr = new ClientDTO(client);
     clienteRepository.save(client);
-    return cr;
   }
-  public ClientDTO updateRecord(String nome, Client client) {
+  public void updateClient(String nome, Client client) {
     Client cloneClient = Optional.of(clienteRepository.findByNameLike(nome))
             .orElseThrow(() -> new BusinessRuleException("Client not found"));
     client.setId(cloneClient.getId());
     cloneClient.setName(client.getName());
     cloneClient.setOld(client.getOld());
     clienteRepository.save(client);
-    return new ClientDTO(cloneClient);
   }
   public List<ClientDTO> list() {
     return Optional.of(clienteRepository.findAll()
