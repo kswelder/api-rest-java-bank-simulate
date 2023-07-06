@@ -22,7 +22,7 @@ public class ClientService {
   private AccountService accountService;
 
   public ClientDTO saveRecord(String username,Client client) {
-    Account account = accountService.getAccount(username);
+    Account account = accountService.findAccount(username);
     client.setAccount(account);
     ClientDTO cr = new ClientDTO(client);
     clienteRepository.save(client);
