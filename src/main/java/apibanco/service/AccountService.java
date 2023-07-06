@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +18,9 @@ public class AccountService {
   private AccountRepository accountRepository;
 
   public void saveAccount(Account account) {
+    LocalDateTime localDateTime = LocalDateTime.now();
+    account.setUpdatedAt(localDateTime);
+    account.setCreatedAt(localDateTime);
     accountRepository.save(account);
   }
   public void updateAccount(String username, Account account) {
@@ -28,7 +30,7 @@ public class AccountService {
     account1.setUpdatedAt(LocalDateTime.now());
     accountRepository.save(account1);
   }
-  public Account getAccount(String username) {
+  public Account findAccount(String username) {
     return Optional.of(accountRepository.findByUsername(username))
             .orElseThrow(() -> new RuntimeException("User not found"));
   }
