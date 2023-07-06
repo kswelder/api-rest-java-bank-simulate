@@ -37,5 +37,9 @@ public class Account implements Serializable{
   @JoinColumn(name = "address_id")
   private Address address;
 
+  @OneToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "client_id")
+  private Client client;
+
 }
 
