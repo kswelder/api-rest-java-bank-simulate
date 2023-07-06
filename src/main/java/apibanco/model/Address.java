@@ -8,6 +8,7 @@ import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -24,6 +25,8 @@ public class Address implements Serializable{
   private String city;
   private String street;
   private Integer number;
+  private LocalDateTime createdAt;
+  private LocalDateTime updatedAt;
 
   @OneToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "account_id")

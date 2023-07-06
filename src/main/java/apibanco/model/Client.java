@@ -8,6 +8,7 @@ import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -23,6 +24,8 @@ public class Client implements Serializable{
   private Long id;
   private String name;
   private String old;
+  private LocalDateTime createdAt;
+  private LocalDateTime updatedAt;
 
   @OneToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "account_id")
