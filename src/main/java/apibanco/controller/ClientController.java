@@ -23,15 +23,14 @@ public class ClientController {
   }
 
   @PostMapping(path="/save/{username}")
-  public ResponseEntity<ClientDTO> savarRecord(@PathVariable("username") String username ,@RequestBody Client client) {
+  public ResponseEntity<Void> savarRecord(@PathVariable("username") String username ,@RequestBody Client client) {
     ClientDTO dto = clientService.saveRecord(username ,client);
-
-    return ResponseEntity.status(HttpStatus.CREATED).body(dto);
+    return new ResponseEntity<>(HttpStatus.CREATED);
   }
   @PutMapping(path="/update/{nome}")
   public ResponseEntity<ClientDTO> updateOne(@PathVariable("nome") String nome, @RequestBody Client client) {
-    ClientDTO dto = clientService.updateRecord(nome, client);
-    return ResponseEntity.status(HttpStatus.NO_CONTENT).body(dto);
+    clientService.updateRecord(nome, client);
+    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
   }
 
   @GetMapping(path="/list")
