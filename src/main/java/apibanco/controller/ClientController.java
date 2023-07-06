@@ -24,7 +24,7 @@ public class ClientController {
 
   @PostMapping(path="/save/{username}")
   public ResponseEntity<Void> savarRecord(@PathVariable("username") String username ,@RequestBody Client client) {
-    ClientDTO dto = clientService.saveRecord(username ,client);
+    clientService.saveRecord(username ,client);
     return new ResponseEntity<>(HttpStatus.CREATED);
   }
   @PutMapping(path="/update/{nome}")
